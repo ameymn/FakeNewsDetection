@@ -6,6 +6,7 @@ dist/
 wheels/
 *.egg-info
 
+fake-news/
 
 .DS_Store
 

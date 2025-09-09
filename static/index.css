@@ -1,24 +1,9 @@
-/* background */
 body {
     background: url(https://www.pixelstalk.net/wp-content/uploads/2016/05/Black-abstract-wide-wallpapers-HD.jpg) no-repeat center center fixed;
     background-size: cover;
     font-family: 'Montserrat', sans-serif;
 }
 
-/* container */
-.login {
-    opacity: 1;
-    position: relative;
-    max-width: 900px;
-    width: 90%;
-    margin: 40px auto;
-    padding: 40px 50px;
-    background: rgba(0,0,0,0.25);
-    border-radius: 12px;
-    box-shadow: 0 6px 30px rgba(0,0,0,0.6);
-}
-
-/* header */
 h1 {
     color: white;
     font-size: 32px;
@@ -28,32 +13,25 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* label */
 label {
     display: block;
     margin-top: 12px;
     margin-bottom: 8px;
     padding-left: 5px;
+    color: #fff;
 }
 
-/* form container */
-.input-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-/* textarea */
 .text {
     width: 100%;
     min-height: 340px;
     max-height: 600px;
     padding: 20px;
     border-radius: 18px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 2px solid rgba(255,255,255,0);
-    color: #FFF;
+    background: rgba(255, 255, 255, 0.06); 
+    border: 2px solid rgba(255,255,255,0.25);
+    color: #fff !important;               
+    -webkit-text-fill-color: #fff !important; 
+    caret-color: #fff;
     font-size: 18px;
     resize: vertical;
     transition: all 0.25s ease;
@@ -62,19 +40,17 @@ label {
 
 .text:focus {
     outline: none;
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    background: rgba(0,0,0,0.0);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: rgba(0,0,0,0.2);
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
 }
 
-/* button row */
-.button-row {
-    display: flex;
-    width: 100%;
-    gap: 12px;
-    margin-top: 18px;
+.text::placeholder {
+    color: rgba(255,255,255,0.6);
+    opacity: 1;
 }
 
-/* paste button */
 #paste-btn {
     flex: 0 0 100px;
     border-radius: 20px;
@@ -82,7 +58,6 @@ label {
     font-weight: 600;
 }
 
-/* predict button (wide) */
 .predict-btn {
     flex: 1;
     padding: 12px 18px;
@@ -90,7 +65,7 @@ label {
     border: none;
     cursor: pointer;
     background: grey;
-    color: #FFF;
+    color: #fff;
     font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
@@ -103,7 +78,6 @@ label {
     box-shadow: 0px 6px 22px -8px rgba(64,130,245,0.8);
 }
 
-/* result card */
 .result-card {
     margin-top: 18px;
     padding: 14px 18px;
@@ -114,16 +88,12 @@ label {
 }
 
 .result-line {
-    color: #FFF;
+    color: #fff;
     font-size: 18px;
     margin: 6px 0;
 }
 
-/* responsive */
 @media (max-width: 600px) {
-    .login {
-        padding: 24px;
-    }
     #paste-btn {
         flex: 0 0 84px;
         font-size: 14px;
