@@ -13,18 +13,6 @@ from nltk.corpus import stopwords
 import numpy as np
 import re
 import os
-import sys
-
-print("CWD:", os.getcwd(), file=sys.stderr)
-print("BASE_DIR:", os.path.dirname(__file__), file=sys.stderr)
-try:
-    print("static contents:", os.listdir("static"), file=sys.stderr)
-except Exception as e:
-    print("static missing:", e, file=sys.stderr)
-try:
-    print("templates contents:", os.listdir("templates"), file=sys.stderr)
-except Exception as e:
-    print("templates missing:", e, file=sys.stderr)
 
 
 BASE_DIR = Path(__file__).resolve().parent
