@@ -1,4 +1,4 @@
-name: Deploy to DigitalOcean and Announce on GitHub
+name: Deploy to DigitalOcean
 
 on:
   push:
