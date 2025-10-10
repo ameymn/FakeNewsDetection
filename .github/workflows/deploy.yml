@@ -2,8 +2,8 @@ name: Deploy to DigitalOcean
 
 on:
   push:
-    branches: [main]         
-  workflow_dispatch:          
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -19,7 +19,7 @@ jobs:
           app_id: YOUR_APP_ID
 
       - name: Announce deployment to GitHub
-        uses: peter-evans/create-deployment@v3
+        uses: peter-evans/create-deployment@v3.1.2
         with:
           token: ${{ secrets.GH_TOKEN }}
           environment: production
