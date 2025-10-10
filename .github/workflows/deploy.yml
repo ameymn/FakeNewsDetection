@@ -5,6 +5,11 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# ensure workflow can create deployments
+permissions:
+  contents: read
+  deployments: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -14,15 +19,16 @@ jobs:
 
       - name: Deploy to DigitalOcean
         uses: digitalocean/app_action/deploy@v2
+        id: do_deploy
         with:
           token: ${{ secrets.DIGITALOCEAN_TOKEN }}
           app_id: 8ca56a92-9738-49cb-8b3c-570849860fad
 
-      - name: Deployment
-        uses: peter-evans/create-deployment@v3.1.2
+      - name: Create GitHub deployment (record)
+        uses: chrnorm/deployment-action@v2
+        id: create_deployment
         with:
           token: ${{ secrets.GH_TOKEN }}
           environment: production
-          production_environment: true
+          environment-url: "https://fakenews-barn3.ondigitalocean.app/"
           auto_inactive: true
-          required_contexts: '[]'
