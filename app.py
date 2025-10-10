@@ -54,7 +54,8 @@ async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 @app.post("/predict", response_class=HTMLResponse)
-async def predict(request: Request, text: str = Form(...)):
+async def predict(request: Request, text: str = Form(""), url: str = Form("")):
+    print(url)
     X_final = preprocess_text(text)
     model = get_model()
     y_pred = model.predict(X_final)
