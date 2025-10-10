@@ -16,9 +16,9 @@ jobs:
         uses: digitalocean/app_action/deploy@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_TOKEN }}
-          app_id: YOUR_APP_ID
+          app_id: 8ca56a92-9738-49cb-8b3c-570849860fad
 
-      - name: Announce deployment to GitHub
+      - name: Deployment
         uses: peter-evans/create-deployment@v3.1.2
         with:
           token: ${{ secrets.GH_TOKEN }}
