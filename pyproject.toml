@@ -16,6 +16,7 @@ dependencies = [
     "aiofiles>=23.2.1",
     "newspaper3k>=0.2.8",
     "lxml[html-clean]>=6.0.2",
+    "beautifulsoup4>=4.13.5",
 ]
 
 [dependency-groups]

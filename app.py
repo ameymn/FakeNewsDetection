@@ -9,7 +9,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from pathlib import Path
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
-
+from newspaper import Article
 import numpy as np
 import re
 import os
@@ -49,13 +49,24 @@ def preprocess_text(text: str) -> np.ndarray:
     embedded_docs = pad_sequences(onehot_repr, padding="pre", maxlen=MAX_SEQUENCE_LENGTH)
     return np.array(embedded_docs)
 
+def extract_text_from_url(url: str) -> str:
+    article = Article(url)
+    article.download()
+    article.parse()
+    return article.text
+
+
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 @app.post("/predict", response_class=HTMLResponse)
 async def predict(request: Request, text: str = Form(""), url: str = Form("")):
-    print(url)
+    #print(url)
+    if url and not text.strip():
+        text=extract_text_from_url(url)
+        #print(text)
+
     X_final = preprocess_text(text)
     model = get_model()
     y_pred = model.predict(X_final)
