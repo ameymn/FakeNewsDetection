@@ -1,0 +1,28 @@
+name: Deploy to DigitalOcean and Announce on GitHub
+
+on:
+  push:
+    branches: [main]         
+  workflow_dispatch:          
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Deploy to DigitalOcean
+        uses: digitalocean/app_action/deploy@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_TOKEN }}
+          app_id: YOUR_APP_ID
+
+      - name: Announce deployment to GitHub
+        uses: peter-evans/create-deployment@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          environment: production
+          production_environment: true
+          auto_inactive: true
+          required_contexts: '[]'
